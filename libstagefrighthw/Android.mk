@@ -21,9 +21,7 @@ include $(CLEAR_VARS)
 #             Deploy the headers that can be exposed
 #===============================================================================
 
-LOCAL_COPY_HEADERS_TO   := mm-core/omxcore
-LOCAL_COPY_HEADERS      := QComOMXMetadata.h \
-                           QComOMXPlugin.h
+LOCAL_EXPORT_HEADER_LIBRARY_HEADERS := libstagefrighthw.libOmxCore_headers
 
 LOCAL_SRC_FILES := \
     QComOMXPlugin.cpp                      \
@@ -55,4 +53,9 @@ LOCAL_MODULE := libstagefrighthw
 LOCAL_VENDOR_MODULE := true
 
 include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libstagefrighthw.libOmxCore_headers
+LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/include
+include $(BUILD_HEADER_LIBRARY)
 
